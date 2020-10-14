@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:triton_chat/root_page.dart';
-import 'LoginSignupPage.dart';
 import 'authentication.dart';
+import 'package:triton_chat/linked_list.dart';
 
 void main() {
   runApp(MyApp());
