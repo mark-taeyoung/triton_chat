@@ -7,5 +7,5 @@ class ChatRoom {
   LinkedList<User> userList;
   LinkedList<Message> messageList;
 
-  ChatRoom() {}
+  // ChatRoom() {}
 }

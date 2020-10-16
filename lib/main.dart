@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:triton_chat/screens/root_page.dart';
+import 'package:triton_chat/pages/root_page.dart';
 import 'models/authentication.dart';
-import 'package:triton_chat/models/linked_list.dart';
+// import 'package:triton_chat/models/linked_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        accentColor: Colors.red,
       ),
       home: RootPage(
         auth: new Auth(),
