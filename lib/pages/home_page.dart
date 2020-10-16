@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:triton_chat/widgets/contacts.dart';
+import 'package:triton_chat/widgets/recent_chats.dart';
 import '../models/authentication.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,6 +16,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Contacts(),
+    RecentChats(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   _signOut() async {
     try {
       await widget.auth.signOut();
@@ -62,21 +76,26 @@ class _HomePageState extends State<HomePage> {
               onPressed: _signOut)
         ],
       ),
-      body: Contacts(),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-                icon: Icon(Icons.person), iconSize: 25.0, onPressed: () {}),
-            IconButton(
-                icon: Icon(Icons.chat_bubble_outline_rounded),
-                iconSize: 25.0,
-                onPressed: () {}),
-            IconButton(
-                icon: Icon(Icons.more_horiz), iconSize: 25.0, onPressed: () {}),
-          ],
-        ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        iconSize: 25.0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Contacts',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_bubble_outline_rounded),
+            label: 'Chats',
+          )
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Theme.of(context).accentColor,
+        onTap: _onItemTapped,
       ),
     );
   }
