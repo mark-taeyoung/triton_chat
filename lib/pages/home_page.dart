@@ -63,6 +63,21 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Contacts(),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+                icon: Icon(Icons.person), iconSize: 25.0, onPressed: () {}),
+            IconButton(
+                icon: Icon(Icons.chat_bubble_outline_rounded),
+                iconSize: 25.0,
+                onPressed: () {}),
+            IconButton(
+                icon: Icon(Icons.more_horiz), iconSize: 25.0, onPressed: () {}),
+          ],
+        ),
+      ),
     );
   }
 }
